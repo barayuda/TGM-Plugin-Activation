@@ -1,0 +1,55 @@
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<footer class="doc-foot-content" id="site-footer">
+			{% if page.anchor == "home" %}
+			{% include tweet-button.html %}
+			{% endif %}
+
+			<div class="build-date">Last Updated: {{ site.time	| date: "%B %d, %Y" }}</div>
+		</footer>
+
+
+		<!-- jQuery via CDN with local fall-back -->
+		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.3/jquery.min.js"></script>
+		<script type="text/javascript">(window.jQuery) || document.write('\x3Cscript type="text/javascript" src="{{ '/js/jquery.1.12.3.min.js' | prepend: site.tgmpa.url }}">\x3C/script>')</script>
+
+		{% if page.anchor == "download" %}
+		<script type="text/javascript" src="{{ '/js/marked.min.js?v=0.3.5' | prepend: site.tgmpa.url }}"></script>
+		<script type="text/javascript" src="{{ '/js/jszip.min.js?v=3.0.0' | prepend: site.tgmpa.url }}"></script>
+		<script type="text/javascript" src="{{ '/js/jszip-utils.min.js?v=0.0.2' | prepend: site.tgmpa.url }}"></script>
+		<!--
+		Mandatory in IE 6, 7, 8 and 9.
+		-->
+		<!--[if IE]>
+		<script type="text/javascript" src="{{ '/jszip-utils-ie.js?v=0.0.2' | prepend: site.tgmpa.url }}"></script>
+		<![endif]-->
+		<script type="text/javascript" src="{{ '/js/FileSaver.min.js?v=1.1.20160328' | prepend: site.tgmpa.url }}"></script>
+		<script type="text/javascript" src="{{ '/js/to-title-case.min.js?v=2.1' | prepend: site.tgmpa.url }}"></script>
+		{% endif %}
+
+		{% capture site_generation_date %}{{ site.time | date: "%Y%m%d" }}{% endcapture %}
+		{% if site.tgmpa.url == "http://tgmpluginactivation.com" %}
+		<script type="text/javascript" src="{{ '/js/tgmpa.min.js?v=' | prepend: site.tgmpa.url | append: site_generation_date }}"></script>
+		{% else %}
+		<script type="text/javascript" src="{{ '/js/tgmpa.js?v=' | prepend: site.tgmpa.url | append: site_generation_date }}"></script>
+		{% endif %}
+
+		<script type="text/javascript">
+			!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');
+		</script>
+
+		<script type="text/javascript">
+			var _gaq = _gaq || [];
+			_gaq.push(['_setAccount', '{{ site.tgmpa.analytics }}']);
+			_gaq.push(['_trackPageview']);
+
+			(function() {
+				var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+				ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+				var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+			})();
+		</script>
+	</body>
